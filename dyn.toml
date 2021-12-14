@@ -1,0 +1,5 @@
+[tls]
+
+  [tls.options]
+    [tls.options.mintls12]
+      minVersion = "VersionTLS12"

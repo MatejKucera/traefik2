@@ -9,9 +9,11 @@ services:
     restart: "always"
     command:
       - --log.level=$LOG_LEVEL
+      - --global.sendAnonymousUsage=false
       - --api.insecure=$API_INSECURE
       - --providers.docker=true
       - --providers.docker.exposedbydefault=false
+      - --providers.file.filename=dyn.toml
       - --entrypoints.web.address=:80
       - --entrypoints.websecure.address=:443
       - --entrypoints.web.http.redirections.entryPoint.to=websecure
@@ -24,3 +26,4 @@ services:
     volumes:
       - $CERTIFICATES_DIRECTORY:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./dyn.toml:/dyn.toml
